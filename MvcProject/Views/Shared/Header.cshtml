@@ -1,0 +1,50 @@
+﻿<html>
+ <head>
+     <title></title>
+     <style>
+
+         ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+    color:white;
+}
+     </style>
+ </head>
+<body>
+    <div id="topHeader" style="background-color:#E6E6FA; height:70px; width:1000px; margin:auto;">
+        <p style="text-align:right;">@Session["loggedIn"]</p>
+    </div>
+    
+    <div id="bottomHeader" style="background-color:rebeccapurple;  height:45px; width:1000px; margin:auto;">
+        <ul >
+            <li style="color:white;"><a href="#home">HOME</a></li>
+            <li><a href="#news">INVENTORY</a></li>
+            <li><a href="#contact">FINANCE</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#about">REVIEWS</a></li>
+            <li><a href="#about">SERVICE DEPARTMENT</a></li>
+            <li><a href="#about">GALLERY</a></li>
+        </ul>
+
+    </div>
+</body>
+</html>

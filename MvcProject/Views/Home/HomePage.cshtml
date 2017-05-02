@@ -1,0 +1,166 @@
+﻿@model MvcProject.Models.SignupOrLoginModel
+
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    { 
+    <div id="MainBody" style=" height:480px; width:1000px; margin:auto;  ">
+      
+        <div id="SearchCar" style="height:470px;width: 990px; float:left; margin-left:5px; margin-top:5px; margin-right:5px; margin-bottom:5px; ">
+            <div id="QuickSearch" style="color:black; height:470px; width:480px; margin-left:10px; margin-top:20px;float:left;">
+                <center><a href="@Url.Action("SearchForCar", "Cars")">Search Car Now</a></center>
+                <hr />
+               <a href="#"><img src="~/Images/car4.jpg" height="400" width="400" /></a> 
+
+@*<tr>
+                        <td style="width:100px;">Year</td>
+                        <td><select style="height:30px; border-radius:2px; width:140px;"><option>SELECT</option></select></td>
+                    </tr>
+                    <tr style="height:50px;">
+                        <td style="width:100px;">Price</td>
+                        <td><select style="height:30px; border-radius:2px; width:140px;"><option>SELECT</option></select></td>
+                    </tr>
+                    <tr style="height:50px;">
+                        <td style="width:100px;">Mileage</td>
+                        <td><select style="height:30px; border-radius:2px; width:140px;"><option>SELECT</option></select></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="SEARCH" onclick="location.href='@Url.Action("CarInfo", "Cars")'" style="height:30px; width:100px; border-radius:2px; " /></td>
+                    </tr>
+                </table>
+                    </center>*@
+            </div>
+        
+            <div id="Login" style=" height:470px; width:480px;  margin-top:20px;float:left;">
+                <center><a href="#" class="login">Login</a>&nbsp&nbsp&nbsp&nbsp<a href="#" class="signUp">SignUp</a></center> 
+                <hr />
+                <center><h2 style="font-family:Verdana; color:	#4B0082; padding-left:10px;">Login</h2>
+                <b>Connect With Facebook</b>
+                <input type="button" style="height:50px; width:400px; color: white; background-color:purple;" value="Facebook" />
+                    <table>
+                        <tr style="height:60px">
+                            <td>
+                                <div class="form-group">
+                                    UserName<br />
+                                    @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.login.Username, new { @class = "form-control", @placeholder="Enter Username" })
+                                </div>
+                            </td>
+                        </tr>
+
+                    <tr style="height:60px">
+
+                        <td>
+                            Password<br />
+                            @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.login.Password,
+                            new { @class = "form-control", @placeholder = "Enter Password", @type="password" })
+
+                    </td>
+                </tr>
+
+                <tr style="height:60px">
+
+                    <td><input type="submit" value="LOGIN" id="btnLogin" name="btnLogin"></td>
+                </tr>
+                        <tr>
+                            <td colspan="3" valign="bottom">
+                                <hr style="border-color:#0000FF; border-width:3px" />
+                                @Html.ValueFor(loginOrSignUp => loginOrSignUp.login.Status)
+                            </td>
+                        </tr>
+                        
+                </table>
+                
+                </center>
+                
+                
+                
+    </div>
+            <div id="SignUp" style=" height:470px; width:480px;  margin-top:20px;float:left; display:none;">
+                <center><a href="#" class="login">Login</a>&nbsp&nbsp&nbsp&nbsp<a href="#" class="signUp">SignUp</a></center>
+                <hr />
+                <center>
+                    <h2 style="font-family:Verdana; color:	#4B0082; padding-left:10px;">SignUp</h2>
+                    <b>Connect With Facebook</b>
+                    <input type="button" style="height:50px; width:400px; color: white; background-color:purple;" value="Facebook" />
+                    <table>
+                        <tr style="height:60px">
+
+                            <td>
+                                <div class="form-group">
+                                    Email<br />
+                                    @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.Email, new
+                              
+                                        { @class = "form-control", @placeholder = "Email Address" }
+                               )
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr style="height:60px">
+
+                            <td>
+                                Password<br />
+                                @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.Password,
+                                 new
+                                 
+                                    { @class = "form-control", @placeholder = "Password" }
+                                 )
+
+                            </td>
+                        </tr>
+                        <tr style="height:60px">
+
+                            <td>
+                                Confirm Password<br />
+                                @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.ConfirmPassword,
+                                 new
+                                  { @class = "form-control", @placeholder = "Confirm Password" }
+                                 )
+
+                            </td>
+                        </tr>
+
+                        <tr style="height:60px">
+
+                            <td><input type="submit" value="SIGN UP" id="btnSignup" name="btnSignup"></td>
+                        </tr>
+                    </table>
+                </center>
+
+            </div>
+        </div>
+        
+
+        </div>
+    <div id="banner" style="height: 200px; width:1000px; margin:auto;">
+        
+        <img class="mySlides" src="~/Images/car1.jpg" style="width:900px; height:250px;">
+        <img class="mySlides" src="~/Images/car2.jpg" style="width:900px; height:250px;">
+        <img class="mySlides" src="~/Images/car3.jpg" style="width:900px; height:250px;">
+
+        <div class="w3-row-padding w3-section">
+            <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Images/car1.jpg" style="width:100%" onclick="currentDiv(1)">
+            </div>
+            <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Images/car2.jpg" style="width:100%" onclick="currentDiv(2)">
+            </div>
+            <div class="w3-col s4">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/Images/car3.jpg" style="width:100%" onclick="currentDiv(3)">
+            </div>
+        </div>
+        
+    </div>
+
+    }
+        }

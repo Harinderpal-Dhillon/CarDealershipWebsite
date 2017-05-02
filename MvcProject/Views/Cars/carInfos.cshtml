@@ -1,0 +1,32 @@
+﻿@model List<MvcProject.Models.SearchCar>
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    {
+        <div id="carInfo" style="height:200px; width:400px;">
+            <p>djdhfdfgdhfgdsh</p>
+            <table>
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>@d.Make</td>
+                        <td>@d.Model</td>
+                        <td>@d.Year</td>
+                        <td>@d.Price</td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    }
+
+}
