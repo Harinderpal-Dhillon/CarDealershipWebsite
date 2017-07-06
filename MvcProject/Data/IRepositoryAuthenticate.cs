@@ -13,6 +13,7 @@ namespace MvcProject.Data
         //void SignOut();
         bool ValidateUser(string userName, string password);
         int Register(string userName, string pass, string confirmPass);
+        bool ValidateUsername(string userName);
         //RegistrationModel GetCustomerInfo(string userName);
         //bool UpdateCustomer(RegistrationModel Info);
     }

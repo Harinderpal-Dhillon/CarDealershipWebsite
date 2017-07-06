@@ -66,9 +66,9 @@ namespace MvcProject.Data
                 da.SelectCommand = cmd;
                 da.Fill(dt);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             finally
             {

@@ -1,4 +1,5 @@
-﻿@model List<MvcProject.Models.SearchCar>
+﻿@model MvcProject.Models.CarResultsModel
+
 @{
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
@@ -12,8 +13,9 @@
     @using (Html.BeginForm())
     {
         <br />
+    <div id="searchBody" style="height:auto; width:1000px;margin:auto; ">
+        <div id="CarSearch" style="float:left; width:400px; margin-top:50px; margin-bottom:20px;">
 
-        <center>
             <h2>Search Car</h2>
             <table>
                 <tr>
@@ -21,18 +23,50 @@
                         Make
                     </td>
                     <td style="width:60px; height:50px;">
-                        <select name="listbox" id="listbox" style="width:130px;">
-                            @foreach (var item in Model)
+                        @{
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        //Write loop and iterate on all elements of m.leagueModel[i]
+        listItems.Add(new SelectListItem
+        {
+            Text = "-- Select --",
+            Value = "0",
+            Selected = true
+        });
+
+        foreach (var item in Model.carMake)
+        {
+            if (item.Make != null)
+            {
+                listItems.Add(new SelectListItem
+                {
+                    Text = item.Make,
+                    Value = item.Make
+                });
+            }
+        }
+                        }
+
+                       @Html.DropDownListFor(model => model.carMake, listItems , new
+                            {
+                                @class = "form-control",
+                                @id = "ddlMake",
+                                @style = "width:200px;",
+                                @onchange = "javascript:GetOtherCarInfo1(this.value); javascript:GetOtherCarInfo(this.value); javascript:GetOtherCarInfo2(this.value); "
+                             })
+                        @*<select name="makeListbox" id="listbox" style="width:130px;" onchange="javascript:GetOtherCarInfo(this.value);">
+                            @foreach (var item in Model.carMake)
                             {
 
-                                <option value="@item.Id">
+                                <option value="@item.Make">
                                     @item.Make
                                 </option>
                             }
-                        </select>
+                        </select>*@
 
-
+                        
                     </td>
+
+                    
 
                 </tr>
                 <tr></tr>
@@ -41,15 +75,23 @@
                         Model
                     </td>
                     <td style="width:60px;">
-                        <select name="listbox" id="listbox" style="width:130px;">
-                            @foreach (var item in Model)
+                        <select class="form-control" id="ddlModel" name="ddlModel" style="width: 200px"></select>
+                        @*<select name="modelListbox" id="listbox1" style="width:130px;">
+                            @if(!Model.sCar.Any())
+                            {
+                                <option value="select"></option>
+                            }
+                            else { 
+                                
+                            foreach (var item in Model.sCar)
                             {
 
-                                <option value="@item.Id">
+                                <option value="@item.Model">
                                     @item.Model
                                 </option>
                             }
-                        </select>
+                            }
+                        </select>*@
 
 
                     </td>
@@ -59,84 +101,100 @@
                         Year
                     </td>
                     <td style="width:60px;">
-                        <select name="listbox" id="listbox" style="width:130px;">
-                            @foreach (var item in Model)
+                        <select class="form-control" id="ddlYear" name="ddlYear" style="width: 200px"></select>
+                        @*<select name="yearListbox" id="listbox" style="width:130px;">
+                            @if(!Model.sCar.Any())
+                            { 
+                                <option value="select"></option>
+                            }
+                            else { 
+                                
+                            foreach (var item in Model.sCar)
                             {
 
-                                <option value="@item.Id">
+                                <option value="@item.Year">
                                     @item.Year
                                 </option>
                             }
-                        </select>
+                            }
+                        </select>*@
 
 
                     </td>
                 </tr>
                 <tr>
                     <td style="width:60px; height:50px;">
-                        Year
+                        Price
                     </td>
                     <td style="width:60px;">
-                        <select name="listbox" id="listbox" style="width:130px;">
-                            @foreach (var item in Model)
+                        <select class="form-control" id="ddlPrice" name="ddlPrice" style="width: 200px"></select>
+                        @*<select name="priceListbox" id="listbox" style="width:130px;">
+                           @if(!Model.sCar.Any())
+                            {
+                            <option value="select"></option>
+                            }
+                            else {
+                             foreach (var item in Model.sCar)
                             {
 
-                                <option value="@item.Id">
+                                <option value="@item.Price">
                                     @item.Price
                                 </option>
                             }
-                        </select>
-
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @*@Html.DisplayNameFor(loginOrSignUp => loginOrSignUp.sCar.Model)*@
-                    </td>
-                    <td>
-
-                        @*@{
-                                List<SelectListItem> listItems1 = new List<SelectListItem>();
-                                listItems1.Add(new SelectListItem
-                                {
-                                    Text = "-- Select --",
-                                    Value = "0",
-                                    Selected = true
-                                });
-                                listItems1.Add(new SelectListItem
-                                {
-                                    Text = "3 Series",
-                                    Value = "1"
-                                });
-                                listItems1.Add(new SelectListItem
-                                {
-                                    Text = "Altima",
-                                    Value = "2",
-                                });
-                                listItems1.Add(new SelectListItem
-                                {
-                                    Text = "Maxima",
-                                    Value = "3"
-                                });
-                                listItems1.Add(new SelectListItem
-                                {
-                                    Text = "Camry",
-                                    Value = "4"
-                                });
                             }
-                            @Html.DropDownListFor(loginOrSignUp => loginOrSignUp.sCar.Model, listItems1,
-                                    new { @class = "form-control" })*@
+                        </select>*@
+
+
                     </td>
-                    <td colspan="4"></td>
                 </tr>
+               
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Search" id="btnCarSearch" /></td>
                 </tr>
             </table>
 
-        </center>
+           
+        </div>
+        <div id="SearchResults" style="width:600px;float:right;height:auto; margin-top:50px; margin-bottom:20px; ">
+            @if(!Model.carInfo.Any())
+            {
+                <center><p>Check For Car Information</p></center>
+            }
+            else
+            {
+                <center>
+                    <h3>SEARCH RESULTS</h3>
+                    <table>
+                        <tr>
+                            <th style="height:40px; width:80px;">MAKE</th>
+                            <th style="height:40px; width:80px;">MODEL</th>
+                            <th style="height:40px; width:80px;">YEAR</th>  
+                            <th style="height:40px; width:80px;">PRICE</th>
+                            <th style="height:40px; width:80px;">BODY STYLE</th>
+                            <th style="height:40px; width:80px;">MILEAGE</th>
+                            <th style="height:40px; width:80px;"></th>
+                        </tr>
+                        @foreach (var d in Model.carInfo)
+                        {
+                            <tr>
+                                <td style="height:40px; width:80px;">@d.Make</td>
+                                <td style="height:40px; width:80px;">@d.Model</td>
+                                <td style="height:40px; width:80px;">@d.Year</td>
+                                <td style="height:40px; width:80px;">@d.Price</td>
+                                <td style="height:40px; width:80px;">@d.BodyStyle</td>
+                                <td style="height:40px; width:80px;">@d.Mileage</td>
+                                <td style="height:40px; width:80px;"><input type="button" value="SHARE" style="background-color:forestgreen; height:40px; width:80px;" /></td>
+                            </tr>
+                        }
+
+                    </table>
+                </center>
+            }
+               
+
+        </div>
+    </div>
     }
 }
 

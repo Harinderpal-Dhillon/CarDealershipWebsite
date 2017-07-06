@@ -1,0 +1,52 @@
+﻿@model MvcProject.Models.AdminModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    {
+
+        <div id="Gallery" style="height:auto; width:1000px; margin:auto;">
+           
+            
+                <h3 style="margin-left:350px;">Gallery For Cars</h3>
+            <center>
+                <table>
+                    <tr>
+                        <th style="height:120px; width:120px;">Make</th>
+                        <th style="height:120px; width:120px;">Model</th>
+                        <th style="height:120px; width:120px;">Image</th>
+                    </tr>
+                    @{int x = 0;
+                    foreach (var d in Model.gModel)
+                    {
+
+                        string imageBase64 = Convert.ToBase64String(Model.gModel[x].ImageData);
+
+
+                        string imageSrc = string.Format("data:/image/jpeg;base64,{0}", imageBase64);
+                        <tr>
+                            <td style="height:120px; width:120px;">@d.Make</td>
+                            <td style="height:120px; width:120px;">@d.carModel</td>
+                            <td style="height:120px; width:120px;">
+                                <img src="@imageSrc" height="100" />
+                            </td>
+                        </tr>
+                        x++;
+                    }
+                    }
+
+                </table>
+            </center>
+
+            <br />
+        </div>
+    }
+    }

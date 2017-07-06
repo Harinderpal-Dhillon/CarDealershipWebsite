@@ -1,0 +1,280 @@
+﻿
+@model MvcProject.Models.FinanceDetails
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    {
+        <div id="schAppnt" style="margin:auto;">
+            <br />
+            <center>
+                <h3>APPLICATION FOR CREDIT</h3>
+                <p>We specialize in auto finance. Our multiple finance sources and experience in financing is unparalleled. With an excellent credit history you can be assured of the best rates in the market.</p>
+                <table>
+                    <tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Username)
+
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Firstname)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Lastname)
+                        </td>
+                        <td></td>
+                        </tr>
+                    <tr>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;padding-left:2px;">
+                            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td></td>
+                        </tr>
+<tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </td>
+                         <td align="right" style="width:60px; height:50px;">
+
+                                @Html.DisplayNameFor(model => model.Email)
+                          </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.SSN)
+                        </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td style="padding-left:2px;">
+                                                    @{
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                listItems.Add(new SelectListItem
+                                    {
+                                        Text = "--Select--",
+                                        Value = "0",
+                                        Selected = true
+                                    });
+
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Male",
+                                    Value = "Male",
+                                    Selected = true
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Female",
+                                    Value = "Female",
+                                    Selected = true
+                                });
+                    @Html.DropDownListFor(model => model.Gender, listItems, new { @class = "form-control", @id = "gender" })
+
+
+                            }
+                        </td>
+                       
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.SSN, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        
+                    </tr>
+                   
+     <tr></tr>              
+                    <tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.City)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.State)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Country)
+                        </td>
+                        
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Zip)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px; padding-left:2px;">
+                            @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                    <tr>
+                      
+                    </tr>
+                    <tr>
+                      
+                    </tr>
+                    <tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Income)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.AdditionalIncome)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Employed)
+                        </td>
+                        <td></td>
+                        
+                       
+                    </tr>
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.Income, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.AdditionalIncome, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @{
+                                List<SelectListItem> listItemsEmp = new List<SelectListItem>();
+                                listItemsEmp.Add(new SelectListItem
+                                    {
+                                        Text = "--",
+                                        Value = "0",
+                                        Selected = true
+                                    });
+
+                                listItemsEmp.Add(new SelectListItem
+                                {
+                                    Text = "Yes",
+                                    Value = "Yes",
+                                    Selected = true
+                                });
+                                listItemsEmp.Add(new SelectListItem
+                                {
+                                    Text = "No",
+                                    Value = "No",
+                                    Selected = true
+                                });
+                                @Html.DropDownListFor(model => model.Employed, listItemsEmp, new { @class = "form-control", @id = "emp" })
+
+
+                            }
+                        </td>
+
+                    </tr>
+                   
+
+                    <tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.FromYear)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.ToYear)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Make)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Model)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.FromYear, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.ToYear, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.Stock)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.AvailableDownPayment)
+                        </td>
+                        <td align="right" style="width:60px; height:50px;">
+
+                            @Html.DisplayNameFor(model => model.DesiredMonthlyPayment)
+                        </td>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.AvailableDownPayment, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @Html.EditorFor(model => model.DesiredMonthlyPayment, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                       <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" id="btnAppoint" value="Submit" class="form-control" /></td>
+                    </tr>
+                </table>
+            </center>
+            <br />
+        </div>
+    }
+
+}
+
+

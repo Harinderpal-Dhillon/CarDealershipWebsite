@@ -29,5 +29,10 @@ namespace MvcProject.Business
         {
             return irepAuth.Register(userName, pass, confirmPass);
         }
+
+        public bool ValidateUsername(string userName)
+        {
+            return irepAuth.ValidateUsername(userName);
+        }
     }
 }

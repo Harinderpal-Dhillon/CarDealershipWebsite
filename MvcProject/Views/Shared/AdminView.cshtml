@@ -1,0 +1,265 @@
+﻿@model MvcProject.Models.AdminModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm("AdminView", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+<html>
+<head>
+    <title></title>
+    <style>
+        #adminBody{
+            height:700px;
+            width:1000px;
+            margin:auto;
+            background-color:#87CEEB;
+        }
+        #adminMenu{
+            height:45px;
+            width:1000px;
+            background-color:#6A5ACD;
+        }
+
+        #adminPanel{
+            height:auto;
+            width:980px;
+        
+        }
+          
+         ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 26px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #440044;
+    color:white;
+}
+    </style>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    </head>
+        <body>
+            <div id="adminBody">
+                <div id="adminMenu">
+                   <ul>
+                    
+                    <li>
+                    <li><a href="@Url.Action("AdminView", "Admin")">ADD NEW CAR</a></li>
+                    <li><a href="@Url.Action("UpdateCar", "Admin")">UPDATE CAR INFO</a></li>
+                    <li><a href="@Url.Action("DeleteCar", "Admin")">DELETE CAR INFO</a></li>
+                   </ul>
+               </div>
+                <div id="adminPanel">
+
+                    <h3 style="text-align:right;">Welcome @Session["loggedIn"]</h3>
+                    <br />
+                    
+                    <div id="AdminMainView">
+
+                        <center>
+                            <h4>ADD NEW CAR</h4>
+                            <h3> @Html.ValueFor(model => model.Status) </h3>
+                            <table>
+                                @*<tr>
+                                    <td style ="width:60px; height:50px;">Make</td>
+                                   <td>@Html.DropDownListFor(model => model.maketypes, new SelectList(Model.maketypes, "MakeId", "Make"), new
+                            {
+                                @class = "form-control",
+                                @id = "ddlCarMake",
+                                @style = "width:200px;",
+                                @onchange = "javascript:GetCarInfo(this.value);"
+                            })</td>
+                                    <td></td>
+                                </tr>*@
+                                <tr>
+                                    <td align="right" style="width:60px; height:50px;">
+                                        Make
+                                        @*@Html.DisplayNameFor(model => model.maketypes)*@
+                                    </td>
+                                    <td style="width:60px; height:50px;">
+                                        @Html.EditorFor(model => model.maketypes1.Make, new { htmlAttributes = new { @class = "form-control" } })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(model => model.maketypes1.Make)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="right" style="width:60px; height:50px;">
+                                        Model
+                                        @*@Html.DisplayNameFor(model => model.maketypes)*@
+                                    </td>
+                                    <td style="width:60px; height:50px;">
+                                        @Html.EditorFor(model => model.carDetails1.Model, new { htmlAttributes = new { @class = "form-control" } })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(model => model.carDetails1.Model)
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                <td style="width:60px; height:50px;">
+                                    Model
+                                </td>
+                                <td style="width:60px;">
+                                    <select class="form-control" id="ddlModel2" name="ddlModel2" style="width: 200px"></select>
+                                    </td>
+                                    <td></td>
+                                    </tr>*@
+                                <tr>
+                                    <td align="right" style="width:60px; height:50px;">
+                                        Year
+                                        @*@Html.DisplayNameFor(model => model.maketypes)*@
+                                    </td>
+                                    <td style="width:60px; height:50px;">
+                                        @Html.EditorFor(model => model.carDetails1.Year, new { htmlAttributes = new { @class = "form-control" } })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(model => model.carDetails1.Year)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="right" style="width:60px; height:50px;">
+                                        Price
+                                        @*@Html.DisplayNameFor(model => model.maketypes)*@
+                                    </td>
+                                    <td style="width:60px; height:50px;">
+                                        @Html.EditorFor(model => model.carDetails1.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(model => model.carDetails1.Price)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:60px; height:50px;">Mileage</td>
+                                    <td style="width:60px; height:50px;">
+                                        @Html.EditorFor(model => model.carDetails1.Mileage, new { htmlAttributes = new { @class = "form-control" } })
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(model => model.carDetails1.Mileage)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="width:60px; height:50px;">Category</td>
+                                    <td style="width:60px; height:50px;">
+
+                                        
+                                        @Html.DropDownListFor(model => model.carCat, new SelectList(Model.carCat, "catId", "catName"), new
+                                        {
+                                            @class = "form-control",
+                                            @id = "ddlCat2"
+                                        })
+                                    </td>
+                                    <td></td>
+                                    </tr>
+
+                                <tr>
+                                    <td style="width:60px; height:50px;">Body Type</td>
+                                    <td>
+                                        @{
+                                        List<SelectListItem> listItems = new List<SelectListItem>();
+                                        listItems.Add(new SelectListItem
+                                            {
+                                                Text = "--Select--",
+                                                Value = "0",
+                                                Selected = true
+                                            });
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = "Sedan",
+                                            Value = "Sedan",
+                                           
+                                        });
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = "Convertible",
+                                            Value = "Convertible",
+                                           
+                                        });
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = "PickUpTruck",
+                                            Value = "PickUpTruck",
+                                           
+                                        });
+                                @Html.DropDownListFor(model => model.carDetails1.BodyStyle, listItems, new { @class = "form-control" })
+
+
+                                        }
+                                    </td>
+                                    
+                                    @*<td style="width:60px; height:50px;">
+                                        <select class="form-control" id="carType">
+                                            <option value="Sedan">Sedan</option>
+                                            <option value="Convertible">Convertible</option>
+                                            <option value="PickUpTruck">Pick Up Truck</option>
+                                        </select>
+                                    </td>*@
+
+                             </tr>
+                                <tr>
+                                    <td>
+                                <tr>
+                                    <td align="right" style="width:60px; height:50px;">
+                                        @Html.DisplayNameFor(model => model.imgModel1.ImageFile)
+                                    </td>
+                                    <td style="width:60px; height:50px;">
+
+                                        @Html.TextBoxFor(model => model.imgModel1.ImageFile, new { type = "file" })
+                                    </td>
+                                    <td>
+                                        @*@Html.ValidationMessageFor(m => m.Image)*@
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" value="Insert" id="btnInsertCar" /></td>
+                                </tr>
+                               
+                                  
+
+                          </table>
+                            
+                        </center>
+                        
+                    </div>
+                   
+                </div>
+                
+                
+                 
+            </div>
+        </body>
+        
+</html>
+        
+    }
+    }

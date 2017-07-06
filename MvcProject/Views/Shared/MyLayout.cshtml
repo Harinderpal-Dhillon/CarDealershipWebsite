@@ -22,8 +22,122 @@
             $("#Login").hide();
             $("#SignUp").show();
         });
+        
+        //$("#btnCarSearch").click(function () {
+        //    $("#CarSearch").hide();
+        //    $("#SearchResults").show();
+        //});
        
     });
+    function GetOtherCarInfo(_make) {
+        //var promessage ="<option value ='0'>Please wait...</option>";
+        // $("#").html(promessage).show();
+        var url = "http://localhost:50664/Cars/CarModelInfo";
+        $.ajax({
+            url: url,
+            data: { value: _make },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select Model</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlModel").html(markup).show();
+            },
+            error: function (response) {
+                alert("error : " + response);
+            }
+        });
+    }
+
+    function GetCarInfo(_make) {
+        alert("fbxcvhdhf");
+        //var promessage ="<option value ='0'>Please wait...</option>";
+        // $("#").html(promessage).show();
+        var url = "http://localhost:50664/Admin/CarModel";
+        $.ajax({
+            url: url,
+            data: { value: _make },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select Model</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlModel2").html(markup).show();
+            },
+            error: function (response) {
+                alert("error : " + response);
+            }
+        });
+    }
+    function GetOtherCarInfo1(_make) {
+        //var promessage ="<option value ='0'>Please wait...</option>";
+        // $("#").html(promessage).show();
+        var url = "http://localhost:50664/Cars/CarYearInfo";
+        $.ajax({
+            url: url,
+            data: { value: _make },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select Year</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlYear").html(markup).show();
+            },
+            error: function (response) {
+                alert("error : " + response);
+            }
+        });
+    }
+    function GetOtherCarInfo2(_make) {
+        //var promessage ="<option value ='0'>Please wait...</option>";
+        // $("#").html(promessage).show();
+        var url = "http://localhost:50664/Cars/CarPriceInfo";
+        $.ajax({
+            url: url,
+            data: { value: _make },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select Price</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlPrice").html(markup).show();
+            },
+            error: function (response) {
+                alert("error : " + response);
+            }
+        });
+    }
+
+    function GetServiceCat(_cat) {
+        //var promessage ="<option value ='0'>Please wait...</option>";
+        // $("#").html(promessage).show();
+        var url = "http://localhost:50664/CarService/ServiceCat";
+        $.ajax({
+            url: url,
+            data: {value:_cat },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Select Service</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">\"" + data[x].Text + "\"</option>";
+                }
+                $("#ddlService").html(markup).show();
+            },
+            error: function (response) {
+                alert(_cat);
+                alert("error : " + response);
+            }
+        });
+    }
     </script>
     <script>
     var slideIndex = 1;

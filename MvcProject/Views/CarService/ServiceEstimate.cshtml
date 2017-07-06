@@ -1,0 +1,247 @@
+﻿@model MvcProject.Models.CarResultsModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    {
+        <div id="serviceCost" style="height:410px; width:980px; margin:auto; ">
+            <div id="searchDiv" style="height:400px; width:350px; float:left;margin-left:20px; ">
+                <h3>Estimate Service Cost</h3>
+                <table>
+                    <tr>
+                        <td style="width:60px;">
+                            Make
+                        </td>
+                        <td style="width:60px; height:50px;">
+                            @{
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        //Write loop and iterate on all elements of m.leagueModel[i]
+        listItems.Add(new SelectListItem
+        {
+            Text = "-- Select --",
+            Value = "0",
+            Selected = true
+        });
+
+        foreach (var item in Model.carMake)
+        {
+            if (item.Make != null)
+            {
+                listItems.Add(new SelectListItem
+                {
+                    Text = item.Make,
+                    Value = item.Make
+                });
+            }
+        }
+        }               
+                            @Html.DropDownListFor(model => model.carMake, listItems, new
+                            {
+                                @class = "form-control",
+                                @id = "ddlMake",
+                                @style = "width:200px;",
+                                @onchange = "javascript:GetOtherCarInfo1(this.value); javascript:GetOtherCarInfo(this.value); "
+                            })
+                            
+                            @*<select name="makeListbox" id="listbox" style="width:130px;" onchange="javascript:GetOtherCarInfo(this.value);">
+                            @foreach (var item in Model.carMake)
+                            {
+
+                                <option value="@item.Make">
+                                    @item.Make
+                                </option>
+                            }
+                        </select>*@
+
+
+                        </td>
+
+
+
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            Model
+                        </td>
+                        <td style="width:60px;">
+                            <select class="form-control" id="ddlModel" name="ddlModel" style="width: 200px"></select>
+                            @*<select name="modelListbox" id="listbox1" style="width:130px;">
+                            @if(!Model.sCar.Any())
+                            {
+                                <option value="select"></option>
+                            }
+                            else {
+
+                            foreach (var item in Model.sCar)
+                            {
+
+                                <option value="@item.Model">
+                                    @item.Model
+                                </option>
+                            }
+                            }
+                        </select>*@
+
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            Category
+                        </td>
+                        <td style="width:60px;">
+                            @{
+        List<SelectListItem> listItems1 = new List<SelectListItem>();
+        //Write loop and iterate on all elements of m.leagueModel[i]
+        listItems1.Add(new SelectListItem
+        {
+            Text = "-- Select --",
+            Value = "0",
+            Selected = true
+        });
+
+        foreach (var item in Model.catList)
+        {
+            if (item.ServiceCategoryName != null)
+            {
+                listItems1.Add(new SelectListItem
+                {
+                    Text = item.ServiceCategoryName,
+                    Value = item.ServiceCategoryName
+                });
+            }
+        }
+                            }
+                            
+                            @Html.DropDownListFor(model => model.catList, listItems1, new
+                            {
+                                @class = "form-control",
+                                @id = "ddlCat",
+                                @style = "width:200px;",
+                                @onchange = "javascript:GetServiceCat(this.value);"
+                            })
+                            @*<select name="modelListbox" id="listbox1" style="width:130px;">
+                            @if(!Model.sCar.Any())
+                            {
+                                <option value="select"></option>
+                            }
+                            else {
+
+                            foreach (var item in Model.sCar)
+                            {
+
+                                <option value="@item.Model">
+                                    @item.Model
+                                </option>
+                            }
+                            }
+                        </select>*@
+
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:60px; height:50px;">
+                            Service
+                        </td>
+                        <td style="width:60px;">
+                            <select class="form-control" id="ddlService" name="ddlService" style="width: 200px"></select>
+                            @*<select name="modelListbox" id="listbox1" style="width:130px;">
+                            @if(!Model.sCar.Any())
+                            {
+                                <option value="select"></option>
+                            }
+                            else {
+
+                            foreach (var item in Model.sCar)
+                            {
+
+                                <option value="@item.Model">
+                                    @item.Model
+                                </option>
+                            }
+                            }
+                        </select>*@
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Estimate Cost" id="btnCarSearch" /></td>
+                    </tr>
+                </table>
+
+                <br />
+            </div>
+            <div id="resultsDiv" style="height:400px; width:350px; float:left;">
+                @if (!Model.costList.Any())
+                {
+                    <br />
+                    <center><p>Check For Estimated Cost for Car Service</p></center>
+                }
+                else
+                {
+                    <center>
+                        <h3>SEARCH RESULTS</h3>
+                        <table >
+                            @*<tr>
+                                <th>MAKE</th>
+                                <th>MODEL</th>
+                                <th>YEAR</th>
+                                <th>PRICE</th>
+                                <th>BODY STYLE</th>
+                                <th>MILEAGE</th>
+                            </tr>*@
+                            @*@foreach (var d in Model.costList)*@
+                            @*{
+                                <tr>
+                                   <td>@Model.costList[0].Make</td>
+                                    <td>@Model.costList[0].Model</td>
+                                    <td>@Model.costList[0].Cost</td>
+                                    
+                                </tr>
+                            }*@
+
+
+                        </table>
+                        <h4>@Model.costList[0].Make</h4>&nbsp; &nbsp; &nbsp;@Model.costList[0].Model<br />
+                        <h3>Estimate Cost : @Model.costList[0].Cost</h3>
+                    </center>
+                }
+            </div> 
+            <div id="pic" style="height:400px; width:200px; float:left;">
+                <br />
+                @if (!Model.imgModel.Any())
+                {
+                    <p></p>
+                }
+                else
+                {
+
+                    string imageBase64 = Convert.ToBase64String(Model.imgModelObj.ImageData);
+                    // Add type to ProductModel class
+
+                    string imageSrc = string.Format("data:/image/jpeg;base64,{0}", imageBase64);
+                    <img src="@imageSrc" height="100" />
+
+                }
+
+            </div>
+        </div>
+    
+        <br />
+    }
+
+    }

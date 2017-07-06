@@ -24,25 +24,61 @@ li a {
 }
 
 li a:hover {
-    background-color: #111;
+    background-color: #440044;
     color:white;
 }
-     </style>
+.nav li ul {
+    position:absolute;
+    display:none;
+    width:inherit;
+	text-align:left;
+}
+.nav li:hover ul {
+    display:block;
+}
+
+.nav ul li ul li {
+  display: block;
+  float:none !important; /* newly added */
+  height:auto; /* newly added */
+  line-height:24px; /* newly added */
+  background-color:pink;
+}
+  
+        </style>
  </head>
 <body>
     <div id="topHeader" style="background-color:#E6E6FA; height:70px; width:1000px; margin:auto;">
         <p style="text-align:right;">@Session["loggedIn"]</p>
     </div>
     
-    <div id="bottomHeader" style="background-color:rebeccapurple;  height:45px; width:1000px; margin:auto;">
+    <div class="nav" style="background-color:rebeccapurple;  height:45px; width:1000px; margin:auto;">
         <ul >
-            <li style="color:white;"><a href="#home">HOME</a></li>
-            <li><a href="#news">INVENTORY</a></li>
-            <li><a href="#contact">FINANCE</a></li>
-            <li><a href="#about">ABOUT US</a></li>
+            <li style="color:white;"><a href="@Url.Action("HomePage", "Home")">HOME</a></li>
+            <li><a href="#news">INVENTORY</a>
+                 <ul><li><a href="@Url.Action("ViewUsedCars", "Cars")">VIEW USED CARS</a></li>
+                     <li><a href="@Url.Action("ViewNewCars", "Cars")">VIEW NEW CARS</a></li>
+                     <li><a href="@Url.Action("ViewUsedCarsUnder", "Cars")">USED CARS UNDER $10000</a></li></ul></li>
+            <li><a href="#contact">FINANCE</a>
+                <ul>
+                    <li><a href="@Url.Action("", "")">FINANCE WARRANTIES</a></li>
+                    <li><a href="@Url.Action("Finance", "Finance")">APPLY ONLINE</a></li>
+                    <li><a href="@Url.Action("ViewUsedCarsUnder", "Cars")">LOAN CALCULATOR</a></li>
+                </ul></li>
+            <li><a href="#about">ABOUT US</a>
+                <ul>
+                    <li><a href="#">OUR STAFF</a></li>
+                    <li><a href="@Url.Action("ContactUs", "AboutUs")">CONTACT US</a></li>
+                    
+                </ul></li>
             <li><a href="#about">REVIEWS</a></li>
-            <li><a href="#about">SERVICE DEPARTMENT</a></li>
-            <li><a href="#about">GALLERY</a></li>
+            <li><a href="#about">SERVICE DEPARTMENT</a>
+                <ul>
+                    <li><a href="@Url.Action("ServiceEstimate", "CarService")">GET SERVICE ESTIMATE</a></li>
+                    <li><a href="#">FIND A SERVICE CENTER</a></li>
+                    <li><a href="@Url.Action("Appointment", "ScheduleAppointment")">SCHEDULE AN APPOINTMENT</a></li>
+                </ul></li>
+            <li><a href="@Url.Action("Gallery", "Home")">GALLERY</a></li>
         </ul>
 
     </div>

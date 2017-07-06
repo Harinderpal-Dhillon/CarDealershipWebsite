@@ -1,0 +1,56 @@
+﻿@model MvcProject.Models.CarResultsModel
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleContent{
+    MyView
+}
+
+
+@section ContentBody{
+    @using (Html.BeginForm())
+    {
+        <div id="UsedCars">
+            @if (!Model.carInfo.Any())
+            {
+                <center><p>Check For Car Information</p></center>
+            }
+            else
+            {
+                <center>
+                    <h3>SEARCH RESULTS :USED CARS UNDER $10000</h3>
+                    <table border="1">
+                        <tr>
+                            <th>MAKE</th>
+                            <th>MODEL</th>
+                            <th>YEAR</th>
+                            <th>PRICE</th>
+                            <th>BODY STYLE</th>
+                            <th>MILEAGE</th>
+                        </tr>
+                        @foreach (var d in Model.carInfo)
+                        {
+                            <tr>
+                                <td>@d.Make</td>
+                                <td>@d.Model</td>
+                                <td>@d.Year</td>
+                                <td>@d.Price</td>
+                                <td>@d.BodyStyle</td>
+                                <td>@d.Mileage</td>
+                            </tr>
+                        }
+
+                    </table>
+                </center>
+
+            }
+        </div>
+        <br>
+    }
+}
+
+
+
+

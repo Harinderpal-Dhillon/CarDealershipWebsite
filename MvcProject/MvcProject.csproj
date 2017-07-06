@@ -116,8 +116,13 @@
     <Compile Include="Business\BusinessCar.cs" />
     <Compile Include="Business\IBusinessAuthenticate.cs" />
     <Compile Include="Business\IBusinessCar.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\CarServiceController.cs" />
+    <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScheduleAppointmentController.cs" />
     <Compile Include="Data\DataAccessSql.cs" />
     <Compile Include="Data\IDataAccessSql.cs" />
     <Compile Include="Data\IRepositoryAuthenticate.cs" />
@@ -126,8 +131,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\CarCategory.cs" />
+    <Compile Include="Models\CarFullInfoModel.cs" />
+    <Compile Include="Models\CarMakeModel.cs" />
+    <Compile Include="Models\CarResultsModel.cs" />
+    <Compile Include="Models\EstimateCost.cs" />
+    <Compile Include="Models\FinanceDetails.cs" />
+    <Compile Include="Models\GalleryModel.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\SearchCar.cs" />
+    <Compile Include="Models\ServiceCategory.cs" />
     <Compile Include="Models\SignUp.cs" />
     <Compile Include="Models\SignupOrLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,6 +179,8 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Stylesheet\footerStyles.css" />
     <Content Include="Stylesheet\MyLayout.css" />
     <Content Include="Web.config" />
@@ -177,6 +195,17 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Cars\carInfos.cshtml" />
     <Content Include="Views\Cars\SearchForCar.cshtml" />
+    <Content Include="Views\AboutUs\ContactUs.cshtml" />
+    <Content Include="Views\Shared\AdminView.cshtml" />
+    <Content Include="Views\Cars\ViewUsedCars.cshtml" />
+    <Content Include="Views\Cars\ViewNewCars.cshtml" />
+    <Content Include="Views\Cars\ViewUsedCarsUnder.cshtml" />
+    <Content Include="Views\CarService\ServiceEstimate.cshtml" />
+    <Content Include="Views\ScheduleAppointment\Appointment.cshtml" />
+    <Content Include="Views\Finance\Finance.cshtml" />
+    <Content Include="Views\Admin\UpdateCar.cshtml" />
+    <Content Include="Views\Admin\DeleteCar.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

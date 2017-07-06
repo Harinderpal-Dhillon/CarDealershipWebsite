@@ -9,5 +9,6 @@ namespace MvcProject.Business
     {
         bool ValidateUser(string userName, string password);
         int Register(string userName, string pass, string confirmPass);
+        bool ValidateUsername(string userName);
     }
 }

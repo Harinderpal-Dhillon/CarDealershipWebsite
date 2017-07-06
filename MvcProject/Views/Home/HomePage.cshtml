@@ -45,12 +45,20 @@
                 <center><a href="#" class="login">Login</a>&nbsp&nbsp&nbsp&nbsp<a href="#" class="signUp">SignUp</a></center> 
                 <hr />
                 <center><h2 style="font-family:Verdana; color:	#4B0082; padding-left:10px;">Login</h2>
-                <b>Connect With Facebook</b>
-                <input type="button" style="height:50px; width:400px; color: white; background-color:purple;" value="Facebook" />
-                    <table>
+                <b> <!--google +-->
+<a style="float:right;" href="https://plus.google.com/share?url=http://localhost:62932/Login/Login" onclick="javascript:window.open(this.href,
+'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=400');return false;">
+    <img src="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+" />
+</a> <!-- Twitter -->
+<a style="float:right;" href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" onclick="javascript:window.open(this.href,
+'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=400');return false;">
+    <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+</a></b>
+               <table>
                         <tr style="height:60px">
                             <td>
                                 <div class="form-group">
+                                    <br /><br />
                                     UserName<br />
                                     @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.login.Username, new { @class = "form-control", @placeholder="Enter Username" })
                                 </div>
@@ -90,13 +98,24 @@
                 <hr />
                 <center>
                     <h2 style="font-family:Verdana; color:	#4B0082; padding-left:10px;">SignUp</h2>
-                    <b>Connect With Facebook</b>
-                    <input type="button" style="height:50px; width:400px; color: white; background-color:purple;" value="Facebook" />
-                    <table>
+                    @*<b>Connect With Facebook</b>
+                    <input type="button" style="height:50px; width:400px; color: white; background-color:purple;" value="Facebook" />*@
+                    <!--google +-->
+                    <a style="float:right;" href="https://plus.google.com/share?url=http://localhost:62932/Login/Login" onclick="javascript:window.open(this.href,
+'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=400');return false;">
+                        <img src="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+" />
+                    </a>
+                    <!-- Twitter -->
+                    <a style="float:right;" href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" onclick="javascript:window.open(this.href,
+'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=400');return false;">
+                        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+                    </a>
+                     <table>
                         <tr style="height:60px">
 
                             <td>
                                 <div class="form-group">
+                                    <br /><br />
                                     Email<br />
                                     @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.Email, new
                               
@@ -111,9 +130,7 @@
                             <td>
                                 Password<br />
                                 @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.Password,
-                                 new
-                                 
-                                    { @class = "form-control", @placeholder = "Password" }
+                                 new { @class = "form-control", @placeholder = "Password", @type = "password" }
                                  )
 
                             </td>
@@ -123,8 +140,7 @@
                             <td>
                                 Confirm Password<br />
                                 @Html.TextBoxFor(loginOrSignUp => loginOrSignUp.signUp.ConfirmPassword,
-                                 new
-                                  { @class = "form-control", @placeholder = "Confirm Password" }
+                                 new { @class = "form-control", @placeholder = "Confirm Password", @type = "password" }
                                  )
 
                             </td>
@@ -142,7 +158,7 @@
         
 
         </div>
-    <div id="banner" style="height: 200px; width:1000px; margin:auto;">
+    @*<div id="banner" style="height: 200px; width:1000px; margin:auto;">
         
         <img class="mySlides" src="~/Images/car1.jpg" style="width:900px; height:250px;">
         <img class="mySlides" src="~/Images/car2.jpg" style="width:900px; height:250px;">
@@ -160,7 +176,7 @@
             </div>
         </div>
         
-    </div>
+    </div>*@
 
     }
         }
